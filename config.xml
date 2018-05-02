@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="com.esaybooker.qr" version="1.3.5.2" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0">
+<widget id="com.esaybooker.qr" version="1.3.5.3" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0">
     <name>Easybooker QR-scanner</name>
     <description>
         Easybooker QR-scanner
@@ -95,7 +95,7 @@
         <allow-intent href="http://*/*" />
         <allow-intent href="https://*/*" />
         <access origin="https://easybooker.be" />
-        <access origin="https://napp.easybooker.be"/>
+        <access origin="https://napp.easybooker.be" />
     </platform>
     <platform name="ios">
         <allow-intent href="itms:*" />
