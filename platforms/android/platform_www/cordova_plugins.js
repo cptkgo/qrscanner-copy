@@ -403,7 +403,8 @@ module.exports.metadata =
   "cordova-plugin-qrscanner": "2.5.0",
   "cordova-plugin-swift-support": "3.1.1",
   "cordova-plugin-vibration": "2.1.6",
-  "phonegap-plugin-barcodescanner": "7.1.2"
+  "phonegap-plugin-barcodescanner": "7.1.2",
+  "cordova-plugin-whitelist": "1.3.3"
 };
 // BOTTOM OF METADATA
 });
