@@ -2,26 +2,9 @@
 <html>
 
     <head>
-        
-        <meta charset="utf-8">
-        <meta name="format-detection" content="telephone=no" />
-        <meta name="msapplication-tap-highlight" content="no" />
-        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width" />
 
-        <allow-navigation href="http://*/*"/>
-        <allow-navigation href="https://*/*"/>
-        <access origin="*"/>
-        <!-- This is a wide open CSP declaration. To lock this down for production, see below. -->
-        <!-- <meta http-equiv="Content-Security-Policy" content="default-src * 'unsafe-inline'; style-src 'self' 'unsafe-inline'; media-src *" /> -->
-        <!-- Good default declaration:
-        * gap: is required only on iOS (when using UIWebView) and is needed for JS->native communication
-        * https://ssl.gstatic.com is required only on Android and is needed for TalkBack to function properly
-        * Disables use of eval() and inline scripts in order to mitigate risk of XSS vulnerabilities. To change this:
-            * Enable inline JS: add 'unsafe-inline' to default-src
-            * Enable eval(): add 'unsafe-eval' to default-src
-        * Create your own at http://cspisawesome.com
-        -->
-        <!-- <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: 'unsafe-inline' https://ssl.gstatic.com; style-src 'self' 'unsafe-inline'; media-src *" /> -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
         <title>Easybooker QR Scanner - Login</title>
 
@@ -37,6 +20,7 @@
                 <div class="col-md-6 col-md-offset-3 text-center">
 
                     <!--<h1 class="logo-name">Easybooker</h1>-->
+
                     <img src="img/logo_alt.png" class="img-responsive" style="width:60%; margin:0 auto">
 
                 </div>
@@ -44,13 +28,13 @@
             <div class="row">
                 <div class="col-md-6 col-md-offset-3">
                     <h3 style="margin-top:50px; text-transform:uppercase">Welkom op Easybooker!</h3>
-                    <p>Beheer al uw klanten & promocodes in een handomdraai,<br>
+                    <p>Beheer al uw reservaties in een handomdraai,<br>
                         op gelijk welk apparaat! </p>
+                    <p style="margin-top:25px">Log je nu in of vraag een account aan</p>
 
-                    <form class="m-t" role="form" method="post" action="https://napp.easybooker.be/qrlogin.php">
+                    <form class="m-t" role="form" id="loginform">
                         <div class="form-group">
                             <input type="email" class="form-control" name="username" placeholder="Gebruikersnaam" required="">
-                            <input type="hidden" class="form-control" name="android" value="1">
                         </div>
                         <div class="form-group">
                             <input type="password" class="form-control" name="password" placeholder="Wachtwoord" required="">
@@ -71,27 +55,52 @@
 
         <!-- Mainly scripts -->
         <script src="js/jquery-3.3.1.min.js"></script>
-        <script src="js/jquery.mobile-1.4.5.js"></script>
         <script src="js/bootstrap.min.js"></script>
         <script src="cordova.js"></script>
 
+        <script>
+            /* Attach a submit handler to the form */
+            $("#loginform").submit(function (event) {
+                var ajaxRequest;
+                /* Stop form from submitting normally */
+                event.preventDefault();
+                /* Clear result div*/
+                $("#result").html('');
+                /* Get from elements values */
+                var values = $(this).serialize();
+                /* Send the data using post and put the results in a div */
+                /* I am not aborting previous request because It's an asynchronous request, meaning
+                 Once it's sent it's out there. but in case you want to abort it  you can do it by
+                 abort(). jQuery Ajax methods return an XMLHttpRequest object, so you can just use abort(). */
+                ajaxRequest = $.ajax({
+                    url: "https://napp.easybooker.be/qrlogin.php",
+                    type: "post",
+                    data: values
+                });
+                /*  request cab be abort by ajaxRequest.abort() */
 
-		<!-- set cookie -->
-	    <script>
-	        var authk = window.location.hash.substr(1)
-	        // alert(authk);
-	        if(authk.length == 150){
-	            //alert("authkey OK!");
-	            document.cookie = 'authkey=' + authk + '; expires=31 Dec 2030 23:59:59 GMT';
-	        }
+                ajaxRequest.done(function (response, textStatus, jqXHR) {
+                    // show successfully for submit message
+                    var authkey = response;
+                     // alert(authk);
+                     if(authkey.length == 150){
+                        console.log('authkey=' + authkey + '; expires=31 Dec 2030 23:59:59 GMT');
+                        document.cookie = 'authkey=' + authkey + '; expires=31 Dec 2030 23:59:59 GMT';
+                        // alert('index.html?id='+authkey);
+                        window.location.replace('index.html#'+authkey);
+                     }else{
+                                 alert('gebruikersnaam of wachtwoord incorrect');
+                        window.location.replace('login.html');
+                     }
+                });
+                /* On failure of request this function will be called  */
+                ajaxRequest.fail(function () {
 
-
-            var loginerror = window.location.hash.substr(1)
-            if(loginerror == 'loginerror'){
-                alert('Fout bij inloggen');
-                window.location.replace('login.html');
-            }
-	    </script>
+                    // show error
+                    $("#result").html('Er ging iets mis, gelieve ons te contacteren als dit probleem zich blijft voordoen.');
+                });
+            });
+        </script>
 
         <script>
             // check if cookie is set
