@@ -82,10 +82,16 @@
                 ajaxRequest.done(function (response, textStatus, jqXHR) {
                     // show successfully for submit message
                     var authkey = response;
-                    console.log('authkey=' + authkey + '; expires=31 Dec 2030 23:59:59 GMT');
-                    document.cookie = 'authkey=' + authkey + '; expires=31 Dec 2030 23:59:59 GMT';
-                    // alert('index.html?id='+authkey);
-                     window.location.replace('index.html#'+authkey);
+                     // alert(authk);
+                     if(authkey.length == 150){
+                        console.log('authkey=' + authkey + '; expires=31 Dec 2030 23:59:59 GMT');
+                        document.cookie = 'authkey=' + authkey + '; expires=31 Dec 2030 23:59:59 GMT';
+                        // alert('index.html?id='+authkey);
+                        window.location.replace('index.html#'+authkey);
+                     }else{
+                                 alert('gebruikersnaam of wachtwoord incorrect');
+                        window.location.replace('login.html');
+                     }
                 });
                 /* On failure of request this function will be called  */
                 ajaxRequest.fail(function () {
