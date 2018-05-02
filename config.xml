@@ -95,7 +95,7 @@
         <allow-intent href="http://*/*" />
         <allow-intent href="https://*/*" />
         <access origin="https://easybooker.be" />
-        <access origin="https://napp.easybooker.be" 
+        <access origin="https://napp.easybooker.be"/>
     </platform>
     <platform name="ios">
         <allow-intent href="itms:*" />
@@ -112,7 +112,7 @@
     <allow-intent href="http://*/*" />
     <allow-intent href="https://*/*" />
     <access origin="https://easybooker.be" />
-    <access origin="https://napp.easybooker.be" 
+    <access origin="https://napp.easybooker.be" />
     <plugin name="phonegap-plugin-barcodescanner" spec="~7.1.2" />
     <plugin name="cordova-plugin-qrscanner" spec="^2.5.0" />
     <plugin name="cordova-plugin-battery-status" spec="~1.2.4" />
