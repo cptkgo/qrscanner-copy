@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "/Users/kgo/Desktop/qr/qrscanner/platforms/android/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-nb/values-nb.xml",
+            "outputFile": "/Users/kgo/Desktop/qr/qrscanner copy/platforms/android/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-nb/values-nb.xml",
             "map": [
                 {
                     "source": "/Users/kgo/.gradle/caches/transforms-1/files-1.1/appcompat-v7-23.1.0.aar/3c4b53cbcc97230c4b3fd1e56fa69802/res/values-nb/values-nb.xml",
