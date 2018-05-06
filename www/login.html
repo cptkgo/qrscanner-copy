@@ -5,6 +5,12 @@
 
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<<<<<<< HEAD
+=======
+
+        <allow-navigation href="*" />
+        <access origin="*"/>
+>>>>>>> d5c854e3003baa4645004dec184524d7bb39a83a
 
         <title>Easybooker QR Scanner - Login</title>
 
@@ -15,21 +21,24 @@
 
     <body class="gray-bg">
 
-        <div class="col-md-6 col-md-offset-3 text-center loginscreen animated fadeInDown" style="margin-top:10vh">
+        <div class="col-md-6 col-md-offset-3 text-center loginscreen animated fadeInDown" style="margin-top:7vh !important">
             <div class="row">
                 <div class="col-md-6 col-md-offset-3 text-center">
 
                     <!--<h1 class="logo-name">Easybooker</h1>-->
 
+<<<<<<< HEAD
                     <img src="img/logo_alt.png" class="img-responsive" style="width:60%; margin:0 auto">
+=======
+                    <img src="img/logo_alt.png" class="img-responsive" style="max-width:70%; margin:0 auto; padding-top:5px">
+>>>>>>> d5c854e3003baa4645004dec184524d7bb39a83a
 
                 </div>
             </div>
             <div class="row">
                 <div class="col-md-6 col-md-offset-3">
-                    <h3 style="margin-top:50px; text-transform:uppercase">Welkom op Easybooker!</h3>
-                    <p>Beheer al uw reservaties in een handomdraai,<br>
-                        op gelijk welk apparaat! </p>
+                    <h3 style="margin-top:30px; text-transform:uppercase">Welkom bij Easybooker!</h3>
+                    <p>Via deze app scan je snel Easybooker QR-codes!</p>
                     <p style="margin-top:25px">Log je nu in of vraag een account aan</p>
 
                     <form class="m-t" role="form" id="loginform">
@@ -48,7 +57,7 @@
 
                     <div id="result"></div>
 
-                    <p class="m-t"> <small>Easybooker &copy; 2017</small> </p>
+                    <p class="m-t"> <small>Easybooker &copy; 2018</small> </p>
                 </div>
             </div>
         </div>
@@ -82,14 +91,27 @@
                 ajaxRequest.done(function (response, textStatus, jqXHR) {
                     // show successfully for submit message
                     var authkey = response;
+<<<<<<< HEAD
                     console.log('authkey=' + authkey + '; expires=31 Dec 2030 23:59:59 GMT');
                     document.cookie = 'authkey=' + authkey + '; expires=31 Dec 2030 23:59:59 GMT';
                     // alert('index.html?id='+authkey);
                      window.location.replace('index.html#'+authkey);
+=======
+                     // alert(authk);
+                     if(authkey.length == 150){
+                        console.log('authkey=' + authkey + '; expires=31 Dec 2030 23:59:59 GMT');
+                        document.cookie = 'authkey=' + authkey + '; expires=31 Dec 2030 23:59:59 GMT';
+                        // alert('index.html?id='+authkey);
+                        window.location.replace('index.html#'+authkey);
+                     }else{
+                                 alert('gebruikersnaam of wachtwoord incorrect');
+                        window.location.replace('login.html');
+                     }
+>>>>>>> d5c854e3003baa4645004dec184524d7bb39a83a
                 });
                 /* On failure of request this function will be called  */
                 ajaxRequest.fail(function () {
-
+                	alert(response);
                     // show error
                     $("#result").html('Er ging iets mis, gelieve ons te contacteren als dit probleem zich blijft voordoen.');
                 });

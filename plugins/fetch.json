@@ -2,7 +2,7 @@
   "phonegap-plugin-barcodescanner": {
     "source": {
       "type": "registry",
-      "id": "phonegap-plugin-barcodescanner@7.1.2"
+      "id": "git+https://github.com/jrontend/phonegap-plugin-barcodescanner.git"
     },
     "is_top_level": true,
     "variables": {}
@@ -126,6 +126,14 @@
       "id": "cordova-plugin-swift-support"
     },
     "is_top_level": false,
+    "variables": {}
+  },
+  "cordova-plugin-whitelist": {
+    "source": {
+      "type": "registry",
+      "id": "cordova-plugin-whitelist@^1.3.3"
+    },
+    "is_top_level": true,
     "variables": {}
   }
 }
